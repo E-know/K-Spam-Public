@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/xcode,swift,swiftpm
 # Edit at https://www.toptal.com/developers/gitignore?templates=xcode,swift,swiftpm
 
+### Custom ###
+K-SpamFilter/
+
 ### macOS ###
 # General
 .DS_Store
