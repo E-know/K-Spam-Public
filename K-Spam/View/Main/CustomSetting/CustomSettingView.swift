@@ -41,28 +41,8 @@ struct CustomSettingView: View {
                 UpdateVersionButton(currentVersion: currentVersion, lastVersion: lastVersion)
             }
             
-            HStack {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("주변 지인들에게 앱을 홍보해주세요.")
-                        .font(.system(size: 15))
-                        .foregroundStyle(Color.black)
-                    Text("개발자에게 큰 힘이 됩니다.")
-                        .font(.footnote)
-                        .foregroundStyle(Color.gray)
-                }
-                    .padding(.trailing)
-                
-                Button(action: {showActivity.toggle()}, label: {
-                    VStack {
-                        Image(systemName: "square.and.arrow.up")
-                            .font(.system(size: 24))
-                            .padding(.bottom, 1)
-                        Text("공유하기")
-                            .font(.caption)
-                    }
-                })
-            }
-            .padding()
+            ShareButton
+                .padding()
         }
         .padding()
         .sheet(isPresented: $showActivity, content: {
@@ -85,6 +65,34 @@ struct CustomSettingView: View {
     }
     
     @ViewBuilder
+    private var ShareButton: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 6) {
+                Text("주변 지인들에게 앱을 홍보해주세요.")
+                    .font(.system(size: 15))
+                    .foregroundStyle(Color.black)
+                Text("개발자에게 큰 힘이 됩니다.")
+                    .font(.footnote)
+                    .foregroundStyle(Color.gray)
+            }
+                .padding(.trailing)
+            
+            Button(action: {
+                showActivity.toggle()
+                HapticManager.shared.hapticImpact(style: .light, occurAt: [#fileID, #function])
+            }, label: {
+                VStack {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 24))
+                        .padding(.bottom, 1)
+                    Text("공유하기")
+                        .font(.caption)
+                }
+            })
+        }
+    }
+    
+    @ViewBuilder
     private func SettingElement(bindingValue: Binding<Bool>, text: String, subText: String? = nil, disabled: Bool = false) -> some View {
         Divider()
         Toggle(isOn: bindingValue) {
@@ -100,11 +108,7 @@ struct CustomSettingView: View {
     
     @ViewBuilder
     private func UpdateVersionButton(currentVersion: String, lastVersion: String) -> some View {
-        if currentVersion == lastVersion {
-            Text("앱이 최신 버전입니다.")
-                .foregroundStyle(Color.gray)
-                .font(.footnote)
-        } else {
+        if currentVersion < lastVersion {
             HStack {
                 VStack(alignment: .leading) {
                     Text("현재 버전: \(currentVersion)")
@@ -130,6 +134,10 @@ struct CustomSettingView: View {
                         }
                 }
             }
+        } else {
+            Text("앱이 최신 버전입니다.")
+                .foregroundStyle(Color.gray)
+                .font(.footnote)
         }
     }
     

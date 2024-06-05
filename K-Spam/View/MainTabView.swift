@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @State var selction = MainTapPages.home
+    @State var selction = MainTabPages.home
     var body: some View {
         TabView(selection: $selction) {
-            ForEach(MainTapPages.allCases) { value in
+            ForEach(MainTabPages.allCases) { value in
                 value.view
                     .tabItem {
                         value.tapItem
                     }
                     .tag(value)
             }
+        }
+        .onChange(of: selction) {
+            HapticManager.shared.hapticImpact(style: .light, occurAt: [#fileID, #function])
         }
     }
 }

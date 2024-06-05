@@ -34,9 +34,10 @@ struct OnboardingPage2: View {
         VStack {
             Text("K-Spam 필터")
                 .font(.system(size: 32, weight: .heavy))
-                .padding()
+                .padding(.horizontal)
             
             Text("K-Spam 필터는 다음과 같은 특징이 있습니다.")
+                .padding()
             
             VStack(alignment: .leading, spacing: 24) {
                 ListElement(title: "1. 저장된 연락처에 한해서는 필터링 되지 않습니다.", detail: "필터링을 원치 않는 연락처는 저장해주세요")
@@ -45,8 +46,10 @@ struct OnboardingPage2: View {
                 
                 ListElement(title: "3. 완벽하지 않습니다.", detail: "요새는 스팸이 고도화되고 있습니다.  필터링 조건을 논문까지 찾아봐 구현해 보아도 쉽지 않습니다. 😢 필터가 완벽하지 않아서 스팸문자가 필터가 안 될 수 있습니다. 양해부탁드립니다. 😭")
             }
-            .padding()
+            
+            Spacer()
         }
+        .padding()
     }
 }
 
@@ -77,6 +80,7 @@ struct OnboardingPage3: View {
             }
             .padding()
             
+            Spacer()
         }
         .sheet(isPresented: $showWebView) {
             WKWebViewUI(url: "https://developer.apple.com/documentation/sms_and_call_reporting/sms_and_mms_message_filtering")
@@ -96,7 +100,7 @@ struct OnboardingPage4: View {
             HStack {
                 VStack(alignment: .leading) {
                     HStack {
-                        Image("SettingIcon")
+                        Image("settingIcon")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 25)
@@ -163,5 +167,5 @@ struct ListElement: View {
 }
 
 #Preview {
-    OnboardingPage4()
+    OnboardingPage3()
 }
