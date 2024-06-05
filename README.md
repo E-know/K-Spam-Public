@@ -1,6 +1,6 @@
 # K-Spam-Public
 
-안녕하세요. 한국 특화형 스팸 필터링 앱 K-Spam 입니다.
+안녕하세요. 한국 특화형 스팸 필터링 앱 K-Spam 입니다.  
 `이 프로젝트 파일은 KSpamFilter가 제거된 프로젝트입니다.`
 
 ### App Store Link
