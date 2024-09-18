@@ -1,4 +1,6 @@
 # K-Spam-Public
+![Group 39825](https://github.com/user-attachments/assets/7c21be21-6df5-42ac-9bac-e5d4c921c82e)
+
 
 안녕하세요. 한국 특화형 스팸 필터링 앱 K-Spam 입니다.  
 `이 프로젝트 파일은 KSpamFilter가 제거된 프로젝트입니다.`
